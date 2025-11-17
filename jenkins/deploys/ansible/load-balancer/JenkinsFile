@@ -16,7 +16,7 @@ pipeline {
 
       steps {
 
-        sshagent(credentials: ['load_balancer']) {
+        sshagent(credentials: ['jenkins-ssh-key']) {
           
           sh '''
             export ANSIBLE_HOST_KEY_CHECKING=False

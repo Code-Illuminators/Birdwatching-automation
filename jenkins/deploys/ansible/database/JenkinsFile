@@ -19,7 +19,7 @@ pipeline {
 
       steps {
 
-        sshagent(credentials: ['db']) {
+        sshagent(credentials: ['jenkins-ssh-key']) {
 
           sh '''
             ansible-galaxy collection install -r ansible/collections/requirements.yml --force

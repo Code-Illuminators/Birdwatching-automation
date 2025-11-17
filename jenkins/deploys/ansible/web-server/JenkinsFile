@@ -12,7 +12,7 @@ pipeline {
   
       steps {
         withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
-          sshagent(credentials: ['server', 'server2']) {
+          sshagent(credentials: ['jenkins-ssh-key']) {
             sh '''
               export ANSIBLE_HOST_KEY_CHECKING=False
               ansible-inventory -i aws_ec2.yml --graph
