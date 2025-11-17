@@ -25,8 +25,8 @@ pipeline {
             ansible-galaxy collection install -r ansible/collections/requirements.yml --force
 
             export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-inventory -i aws_ec2.yml --graph
-            ansible-playbook -i /var/lib/jenkins/workspace/Run-Servers/ansible/inventories/inventory_servers.ini ansible/db.yml \
+            ansible-inventory -i ansible/aws_ec2.yml --graph
+            ansible-playbook -i ansible/aws_ec2.yml ansible/db.yml -u ec2-user \
               -e db_password="$DB_PASSWORD"
           '''
           
