@@ -1,6 +1,6 @@
 ---
 - name: Update LB server
-  hosts: loadbalancer
+  hosts: _birdwatching_loadbalancer_stage_01
   remote_user: root
   become: yes
 
