@@ -21,7 +21,7 @@ pipeline {
           sh '''
             export ANSIBLE_HOST_KEY_CHECKING=False
             ansible-inventory -i ansible/aws_ec2.yml --graph
-            ansible-playbook -i ansible/aws_ec2.yml ansible/lb.yml
+            ansible-playbook -i ansible/aws_ec2.yml ansible/lb.yml -u ec2-user
           '''
         }
       }
