@@ -26,7 +26,7 @@ pipeline {
 
             export ANSIBLE_HOST_KEY_CHECKING=False
             ansible-inventory -i ansible/aws_ec2.yml --graph
-            ansible-playbook -i ansible/aws_ec2.yml ansible/db.yml -u ec2-user \
+            ansible-playbook -vvv -i  ansible/aws_ec2.yml ansible/db.yml -u ec2-user \
               -e db_password="$DB_PASSWORD"
           '''
           
