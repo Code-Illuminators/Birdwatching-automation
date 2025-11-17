@@ -4,6 +4,12 @@
   become: true
 
   tasks:
+    - name: Ensure that nginx is installed
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+        update_cache: yes
+      
     - name: Ensure PostgreSQL and psycopg2 are installed
       ansible.builtin.dnf:
         name:
