@@ -20,7 +20,7 @@ pipeline {
           
           sh '''
             export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-inventory -i Automation/ansible/aws_ec2.yml --graph
+            ansible-inventory -i ansible/aws_ec2.yml --graph
             ansible-playbook -i /var/lib/jenkins/workspace/Run-Servers/ansible/inventories/inventory_servers.ini ansible/lb.yml
           '''
         }
