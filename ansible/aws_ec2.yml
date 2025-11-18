@@ -13,5 +13,5 @@ hostnames:
 
 compose:
   ansible_host: instance-id
-  ansible_connection: community.aws.aws_ssm
+  ansible_connection: amazon.aws.aws_ssm
   ansible_user: ec2-user
