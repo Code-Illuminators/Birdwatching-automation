@@ -4,12 +4,6 @@
   become: true
 
   tasks:
-   
-    - name: TEST — Check network connectivity
-      ansible.builtin.shell: |
-        curl -I https://amazon.com || echo "NO INTERNET"
-      register: curl_result
-      changed_when: false
      
     - name: Ensure PostgreSQL and psycopg2 are installed
       ansible.builtin.dnf:
