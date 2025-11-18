@@ -1,7 +1,7 @@
 ---
 - name: Update db servers
   hosts: _birdwatching_db_stage_01
-  connection: amazon.aws.aws_ssm
+  connection: aws_ssm
   become: true
 
   tasks:
