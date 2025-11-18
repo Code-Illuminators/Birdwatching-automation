@@ -2,6 +2,7 @@
 - name: Update db servers
   hosts: _birdwatching_db_stage_01
   connection: aws_ssm
+  ansible_aws_ssm_s3_bucket: birdwatching-ssm-stage-01
   become: true
 
   tasks:
