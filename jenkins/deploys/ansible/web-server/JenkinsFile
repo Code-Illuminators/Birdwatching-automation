@@ -16,7 +16,7 @@ pipeline {
 
             ansible-inventory -i ansible/aws_ec2.yml --graph
 
-            ansible-playbook -i ansible/aws_ec2.yml ansible/flask.yml -u ec2-user \
+            ansible-playbook -i ansible/aws_ec2.yml ansible/flask.yml \
               -e db_password="$DB_PASSWORD" \
               -e github_token="$GITHUB_TOKEN"
           '''
