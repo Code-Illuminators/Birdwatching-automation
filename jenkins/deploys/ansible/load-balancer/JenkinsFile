@@ -5,26 +5,23 @@ pipeline {
   stages {
 
     stage('Checkout') {
-
       steps {
-
         checkout scm
       }
     }
 
     stage('Run Ansible') {
-
       steps {
+        sh '''
+          export ANSIBLE_HOST_KEY_CHECKING=False
 
-        sshagent(credentials: ['jenkins-ssh-key']) {
-          
-          sh '''
-            export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-inventory -i ansible/aws_ec2.yml --graph
-            ansible-playbook -i ansible/aws_ec2.yml ansible/lb.yml -u ec2-user
-          '''
-        }
+          ansible-inventory -i ansible/aws_ec2.yml --graph
+
+          ansible-playbook -vvv \
+            -i ansible/aws_ec2.yml ansible/lb.yml
+        '''
       }
     }
+
   }
 }

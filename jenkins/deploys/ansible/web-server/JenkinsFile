@@ -9,18 +9,17 @@ pipeline {
   stages {
   
     stage('Run Ansible') {
-  
       steps {
         withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
-          sshagent(credentials: ['jenkins-ssh-key']) {
-            sh '''
-              export ANSIBLE_HOST_KEY_CHECKING=False
-              ansible-inventory -i ansible/aws_ec2.yml --graph
-              ansible-playbook -i ansible/aws_ec2.yml ansible/flask.yml -u ec2-user \
-                -e db_password="$DB_PASSWORD" \
-                -e github_token="$GITHUB_TOKEN"
-            '''
-          }
+          sh '''
+            export ANSIBLE_HOST_KEY_CHECKING=False
+
+            ansible-inventory -i ansible/aws_ec2.yml --graph
+
+            ansible-playbook -i ansible/aws_ec2.yml ansible/flask.yml -u ec2-user \
+              -e db_password="$DB_PASSWORD" \
+              -e github_token="$GITHUB_TOKEN"
+          '''
         }
       }
     }
